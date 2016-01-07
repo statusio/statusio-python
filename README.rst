@@ -25,7 +25,7 @@ Documentation
 -------------
 
 View the last release API documentation at:
-http://docs.statusio.apiary.io/
+http://developers.status.io
 
 Using
 -----

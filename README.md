@@ -9,7 +9,7 @@ A Python wrapper around the Status.io API.
 
 This library provides a pure Python interface for the [Status.io API](http://docs.statusio.apiary.io/). It works with Python versions from 2.6+.
 
-[Status.io](http://status.io) provides hosted system status pages.
+[Status.io](https://status.io) provides hosted system status pages.
 
 ## Installing
 
