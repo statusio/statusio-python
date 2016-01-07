@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-'''The setup and build script for the python-statusio library.'''
+'''The setup and build script for the statusio-python library.'''
 
 import os
 
@@ -13,12 +13,12 @@ def read(*paths):
 
 
 setup(
-    name='python-statusio',
+    name='statusio-python',
     version='0.2',
     author='Status.io',
     author_email='support@status.io',
     license='Apache License 2.0',
-    url='https://github.com/statusio/python-statusio',
+    url='https://github.com/statusio/statusio-python',
     keywords='status.io api statusio',
     description='A Python wrapper around the Status.io API',
     long_description=(read('README.rst')),

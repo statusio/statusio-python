@@ -17,9 +17,9 @@ from 2.6+.
 Installing
 ----------
 
-You can install python-statusio using::
+You can install statusio-python using::
 
-    $ pip install python-statusio
+    $ pip install statusio-python
 
 Documentation
 -------------
@@ -52,7 +52,7 @@ There are many more API methods, to read the full API documentation::
 
     $ pydoc statusio.Api
 
-.. |Downloads| image:: https://img.shields.io/pypi/v/python-statusio.svg
-   :target: https://pypi.python.org/pypi/python-statusio/
-.. |Travis CI| image:: https://travis-ci.org/statusio/python-statusio.svg
-   :target: https://travis-ci.org/statusio/python-statusio
+.. |Downloads| image:: https://img.shields.io/pypi/v/statusio-python.svg
+   :target: https://pypi.python.org/pypi/statusio-python/
+.. |Travis CI| image:: https://travis-ci.org/statusio/statusio-python.svg
+   :target: https://travis-ci.org/statusio/statusio-python

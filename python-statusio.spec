@@ -1,13 +1,13 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
-Name:           python-statusio
+Name:           statusio-python
 Version:        0.1
 Release:        %{?dist}
 Summary:        Python Interface for Status.io API
 
 Group:          Development/Libraries
 License:        Apache License 2.0
-URL:            http://github.com/statusio/python-statusio
+URL:            http://github.com/statusio/statusio-python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
