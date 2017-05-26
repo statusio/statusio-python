@@ -964,7 +964,7 @@ class Api(object):
                     }
                 )
             except requests.RequestException as e:
-                raise Error(str(e))
+                print('Error: ' + str(e))
         elif verb == 'GET':
             url = self._BuildUrl(url, extra_params=data)
             try:
@@ -976,7 +976,7 @@ class Api(object):
                     }
                 )
             except requests.RequestException as e:
-                raise Error(str(e))
+                print('Error: ' + str(e))
         elif verb == 'PATCH':
             try:
                 return requests.patch(
@@ -989,7 +989,7 @@ class Api(object):
                     }
                 )
             except requests.RequestException as e:
-                raise Error(str(e))
+                print('Error: ' + str(e))
         elif verb == 'DELETE':
             url = self._BuildUrl(url, extra_params=data)
             try:
@@ -1002,6 +1002,6 @@ class Api(object):
                     }
                 )
             except requests.RequestException as e:
-                raise Error(str(e))
+                print('Error: ' + str(e))
 
         return 0

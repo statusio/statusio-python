@@ -4,7 +4,7 @@
 from __future__ import absolute_import
 
 __author__ = 'support@status.io'
-__version__ = '0.3'
+__version__ = '0.4'
 
 import json                                 # noqa
 
