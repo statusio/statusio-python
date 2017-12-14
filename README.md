@@ -3,7 +3,6 @@
 A Python wrapper around the Status.io API.
 
 [![Downloads](https://img.shields.io/pypi/v/statusio-python.svg)](https://pypi.python.org/pypi/statusio-python/)
-[![Travis CI](https://travis-ci.org/statusio/statusio-python.svg)](https://travis-ci.org/statusio/statusio-python)
 
 ## Introduction
 
@@ -35,11 +34,11 @@ To create an instance of the `statusio.Api` with yout credentials:
     >>> api = statusio.Api(api_id='api_id',
                           api_key='api_key')
 
-To your status page summary:
+To retrieve your status page summary:
 
     >>> summary = api.StatusSummary('status_page_id')
     >>> print(summary)
 
-There are many more API methods, to read the full API documentation::
+View the full API documentation::
 
     $ pydoc statusio.Api

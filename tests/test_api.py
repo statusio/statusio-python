@@ -5,12 +5,13 @@ import time
 import unittest
 import statusio
 
-API_ID = os.environ.get('API_ID')
-API_KEY = os.environ.get('API_KEY')
-STATUSPAGE_ID = os.environ.get('STATUSPAGE_ID')
-COMPONENTS = [os.environ.get('COMPONENT')]
-CONTAINERS = [os.environ.get('CONTAINER')]
-METRIC_ID = os.environ.get('METRIC_ID')
+API_ID = ''
+API_KEY = ''
+STATUSPAGE_ID = '568d8a3e3cada8c2490000dd'
+COMPONENTS = '568d8a3e3cada8c2490000ed'
+CONTAINERS = '568d8a3e3cada8c2490000ec'
+COMPONENT_CONTAINER_COMBO = '568d8a3e3cada8c2490000ed-568d8a3e3cada8c2490000ec'
+METRIC_ID = '568d8ab5efe35d412f0006f8'
 
 ID1 = ''
 ID2 = ''
@@ -36,7 +37,7 @@ class ApiTest(unittest.TestCase):
         print('Testing SubscriberAdd')
         global ID1, ID2
         data = self._api.SubscriberAdd(
-            STATUSPAGE_ID, "email", "phillip.j.fry@planet-express12.com")
+            STATUSPAGE_ID, "email", "test@example.com")
         self.assertEqual(data['status']['error'], 'no')
         ID1 = data['subscriber_id']
         print(data['subscriber_id'])
@@ -55,7 +56,7 @@ class ApiTest(unittest.TestCase):
         print('Testing SubscriberUpdate')
         global ID1, ID2
         data = self._api.SubscriberUpdate(
-            STATUSPAGE_ID, ID1, "phillip.j.fry.1@planet-express.com")
+            STATUSPAGE_ID, ID1, "test@example.com")
         self.assertEqual(data['status']['error'], 'no')
 
     def testSubscriber4Remove(self):
@@ -73,8 +74,7 @@ class ApiTest(unittest.TestCase):
         global ID1, ID2
         data = self._api.MaintenanceSchedule(
             STATUSPAGE_ID,
-            COMPONENTS,
-            CONTAINERS,
+            COMPONENT_CONTAINER_COMBO,
             'Autotest',
             'Autotest Description',
             '2018/12/31',

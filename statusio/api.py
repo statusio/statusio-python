@@ -55,7 +55,7 @@ class Api(object):
         >>> api.IncidentDelete(statuspage_id, incident_id)
         >>> api.MaintenanceList(statuspage_id)
         >>> api.MaintenanceMessage(statuspage_id, message_id)
-        >>> api.MaintenanceSchedule(statuspage_id, components, containers, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation=0, all_infrastructure_affected=0, maintenance_notify_now=0, maintenance_notify_1_hr=0, maintenance_notify_24_hr=0, maintenance_notify_72_hr=0)
+        >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation=0, all_infrastructure_affected=0, maintenance_notify_now=0, maintenance_notify_1_hr=0, maintenance_notify_24_hr=0, maintenance_notify_72_hr=0)
         >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
@@ -429,8 +429,7 @@ class Api(object):
 
     def MaintenanceSchedule(self,
                             statuspage_id,
-                            components,
-                            containers,
+                            infrastructure_affected,
                             maintenance_name,
                             maintenance_details,
                             date_planned_start,
@@ -448,10 +447,8 @@ class Api(object):
            Args:
              statuspage_id:
                Status page ID
-             components:
-               ID of each affected component
-             containers:
-               ID of each affected container
+             infrastructure_affected:
+               ID of each affected component and container combo
              maintenance_name:
                A descriptive title for this maintenance
              maintenance_details:
@@ -483,8 +480,7 @@ class Api(object):
         url = '%s/maintenance/schedule' % self.base_url
         resp = self._RequestUrl(url, 'POST', {
             'statuspage_id': statuspage_id,
-            'components': components,
-            'containers': containers,
+            'infrastructure_affected': infrastructure_affected,
             'maintenance_name': maintenance_name,
             'maintenance_details': maintenance_details,
             'date_planned_start': date_planned_start,

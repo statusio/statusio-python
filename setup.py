@@ -14,9 +14,9 @@ def read(*paths):
 
 setup(
     name='statusio-python',
-    version='0.4',
+    version='0.5',
     author='Status.io',
-    author_email='support@status.io',
+    author_email='hello@status.io',
     license='Apache License 2.0',
     url='https://github.com/statusio/statusio-python',
     keywords='status.io api statusio',
