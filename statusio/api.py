@@ -49,7 +49,7 @@ class Api(object):
         >>> api.ComponentStatusUpdate(statuspage_id, components, containers, details, current_status)
         >>> api.IncidentList(statuspage_id)
         >>> api.IncidentMessage(statuspage_id, message_id)
-        >>> api.IncidentCreate(statuspage_id, components, containers, incident_name, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0, all_infrastructure_affected=0)
+        >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0, all_infrastructure_affected=0)
         >>> api.IncidentUpdate(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.IncidentResolve(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.IncidentDelete(statuspage_id, incident_id)
@@ -176,8 +176,7 @@ class Api(object):
 
     def IncidentCreate(self,
                        statuspage_id,
-                       components,
-                       containers,
+                       infrastructure_affected,
                        incident_name,
                        incident_details,
                        current_status,
@@ -195,10 +194,8 @@ class Api(object):
            Args:
              statuspage_id:
                Status page ID
-             components:
-               ID of each affected component
-             containers:
-               ID of each affected container
+             infrastructure_affected:
+               ID of each affected component and container combo
              incident_name:
                A descriptive title for the incident
              incident_details:
@@ -228,8 +225,7 @@ class Api(object):
         url = '%s/incident/create' % self.base_url
         resp = self._RequestUrl(url, 'POST', {
             'statuspage_id': statuspage_id,
-            'components': components,
-            'containers': containers,
+            'infrastructure_affected': infrastructure_affected,
             'incident_name': incident_name,
             'incident_details': incident_details,
             'current_status': current_status,

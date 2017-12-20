@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           statusio-python
-Version:        0.5
+Version:        0.6
 Release:        %{?dist}
 Summary:        Python Interface for Status.io API
 

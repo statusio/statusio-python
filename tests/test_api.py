@@ -140,8 +140,7 @@ class ApiTest(unittest.TestCase):
         global ID1, ID2
         data = self._api.IncidentCreate(
             STATUSPAGE_ID,
-            COMPONENTS,
-            CONTAINERS,
+            COMPONENT_CONTAINER_COMBO,
             'Autotest',
             'Autotest details',
             300,
