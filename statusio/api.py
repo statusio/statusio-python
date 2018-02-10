@@ -48,13 +48,17 @@ class Api(object):
         >>> api.ComponentList(statuspage_id)
         >>> api.ComponentStatusUpdate(statuspage_id, component, container, details, current_status)
         >>> api.IncidentList(statuspage_id)
+        >>> api.IncidentListByID(statuspage_id)
         >>> api.IncidentMessage(statuspage_id, message_id)
+        >>> api.IncidentSingle(statuspage_id, incident_id)
         >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0, all_infrastructure_affected=0)
         >>> api.IncidentUpdate(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.IncidentResolve(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.IncidentDelete(statuspage_id, incident_id)
         >>> api.MaintenanceList(statuspage_id)
+        >>> api.MaintenanceListByID(statuspage_id)
         >>> api.MaintenanceMessage(statuspage_id, message_id)
+        >>> api.MaintenanceSingle(statuspage_id, maintenance_id)
         >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation=0, all_infrastructure_affected=0, maintenance_notify_now=0, maintenance_notify_1_hr=0, maintenance_notify_24_hr=0, maintenance_notify_72_hr=0)
         >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
         >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
@@ -154,6 +158,21 @@ class Api(object):
         data = json.loads(resp.content.decode('utf-8'))
         return data
 
+    def IncidentListByID(self, statuspage_id):
+        """List all active and resolved incidents by ID.
+
+           Args:
+             statuspage_id:
+               Status page ID
+
+           Returns:
+             A JSON object.
+        """
+        url = '%s/incidents/%s' % (self.base_url, statuspage_id)
+        resp = self._RequestUrl(url, 'GET')
+        data = json.loads(resp.content.decode('utf-8'))
+        return data
+
     def IncidentMessage(self,
                         statuspage_id,
                         message_id):
@@ -170,6 +189,26 @@ class Api(object):
         """
         url = '%s/incident/message/%s/%s' % (self.base_url,
                                              statuspage_id, message_id)
+        resp = self._RequestUrl(url, 'GET')
+        data = json.loads(resp.content.decode('utf-8'))
+        return data
+
+    def IncidentSingle(self,
+                        statuspage_id,
+                        incident_id):
+        """Get single incident.
+
+           Args:
+             statuspage_id:
+               Status page ID
+             incident_id:
+               Incident ID
+
+           Returns:
+             A JSON object.
+        """
+        url = '%s/incident/%s/%s' % (self.base_url,
+                                             statuspage_id, incident_id)
         resp = self._RequestUrl(url, 'GET')
         data = json.loads(resp.content.decode('utf-8'))
         return data
@@ -403,6 +442,21 @@ class Api(object):
         data = json.loads(resp.content.decode('utf-8'))
         return data
 
+    def MaintenanceListByID(self, statuspage_id):
+        """List all active, resolved and upcoming maintenances by ID
+
+           Args:
+             statuspage_id:
+               Status page ID
+
+           Returns:
+             A JSON object.
+        """
+        url = '%s/maintenances/%s' % (self.base_url, statuspage_id)
+        resp = self._RequestUrl(url, 'GET')
+        data = json.loads(resp.content.decode('utf-8'))
+        return data
+
     def MaintenanceMessage(self,
                            statuspage_id,
                            message_id):
@@ -419,6 +473,26 @@ class Api(object):
         """
         url = '%s/maintenance/message/%s/%s' % (
             self.base_url, statuspage_id, message_id)
+        resp = self._RequestUrl(url, 'GET')
+        data = json.loads(resp.content.decode('utf-8'))
+        return data
+
+    def MaintenanceSingle(self,
+                           statuspage_id,
+                           maintenance_id):
+        """Display maintenance message
+
+           Args:
+             statuspage_id:
+               Status page ID
+             maintenance_id:
+               Maintenance ID
+
+           Returns:
+             A JSON object.
+        """
+        url = '%s/maintenance/%s/%s' % (
+            self.base_url, statuspage_id, maintenance_id)
         resp = self._RequestUrl(url, 'GET')
         data = json.loads(resp.content.decode('utf-8'))
         return data
