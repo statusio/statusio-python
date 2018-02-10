@@ -8,8 +8,8 @@ import statusio
 API_ID = ''
 API_KEY = ''
 STATUSPAGE_ID = '568d8a3e3cada8c2490000dd'
-COMPONENTS = '568d8a3e3cada8c2490000ed'
-CONTAINERS = '568d8a3e3cada8c2490000ec'
+COMPONENT = '568d8a3e3cada8c2490000ed'
+CONTAINER = '568d8a3e3cada8c2490000ec'
 COMPONENT_CONTAINER_COMBO = '568d8a3e3cada8c2490000ed-568d8a3e3cada8c2490000ec'
 METRIC_ID = '568d8ab5efe35d412f0006f8'
 
@@ -335,5 +335,5 @@ class ApiTest(unittest.TestCase):
         print('Testing ComponentStatusUpdate')
         global ID1, ID2
         data = self._api.ComponentStatusUpdate(
-            STATUSPAGE_ID, COMPONENTS, CONTAINERS, 'Test status', 300)
+            STATUSPAGE_ID, COMPONENT, CONTAINER, 'Test status', 300)
         self.assertEqual(data['status']['error'], 'no')

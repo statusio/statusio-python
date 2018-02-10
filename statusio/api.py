@@ -46,7 +46,7 @@ class Api(object):
       There are many other methods, including:
 
         >>> api.ComponentList(statuspage_id)
-        >>> api.ComponentStatusUpdate(statuspage_id, components, containers, details, current_status)
+        >>> api.ComponentStatusUpdate(statuspage_id, component, container, details, current_status)
         >>> api.IncidentList(statuspage_id)
         >>> api.IncidentMessage(statuspage_id, message_id)
         >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0, all_infrastructure_affected=0)
@@ -107,8 +107,8 @@ class Api(object):
 
     def ComponentStatusUpdate(self,
                               statuspage_id,
-                              components,
-                              containers,
+                              component,
+                              container,
                               details,
                               current_status):
         """Update the status of a component on the fly without creating an incident or maintenance.
@@ -116,10 +116,10 @@ class Api(object):
            Args:
              statuspage_id:
                Status page ID
-             components:
-               ID of each affected component
-             containers:
-               ID of each affected container
+             component:
+               ID of affected component
+             container:
+               ID of affected container
              details:
                A brief message describing this update
              current_status:
@@ -131,8 +131,8 @@ class Api(object):
         url = '%s/component/status/update' % self.base_url
         resp = self._RequestUrl(url, 'POST', data={
             'statuspage_id': statuspage_id,
-            'components': components,
-            'containers': containers,
+            'component': component,
+            'container': container,
             'details': details,
             'current_status': current_status
         })
