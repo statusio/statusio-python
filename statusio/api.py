@@ -51,18 +51,18 @@ class Api(object):
         >>> api.IncidentListByID(statuspage_id)
         >>> api.IncidentMessage(statuspage_id, message_id)
         >>> api.IncidentSingle(statuspage_id, incident_id)
-        >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0, all_infrastructure_affected=0)
-        >>> api.IncidentUpdate(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
-        >>> api.IncidentResolve(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
+        >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", all_infrastructure_affected="0")
+        >>> api.IncidentUpdate(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
+        >>> api.IncidentResolve(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
         >>> api.IncidentDelete(statuspage_id, incident_id)
         >>> api.MaintenanceList(statuspage_id)
         >>> api.MaintenanceListByID(statuspage_id)
         >>> api.MaintenanceMessage(statuspage_id, message_id)
         >>> api.MaintenanceSingle(statuspage_id, maintenance_id)
-        >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation=0, all_infrastructure_affected=0, maintenance_notify_now=0, maintenance_notify_1_hr=0, maintenance_notify_24_hr=0, maintenance_notify_72_hr=0)
-        >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
-        >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
-        >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, notify_email=0, notify_sms=0, notify_webhook=0, social=0, irc=0, hipchat=0, slack=0)
+        >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation="0", all_infrastructure_affected="0", maintenance_notify_now="0", maintenance_notify_1_hr="0", maintenance_notify_24_hr="0", maintenance_notify_72_hr="0")
+        >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
+        >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
+        >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
         >>> api.MaintenanceDelete(statuspage_id, maintenance_id)
         >>> api.MetricUpdate(statuspage_id, metric_id, day_avg, day_start, day_dates, day_values, week_avg, week_start, week_dates, week_values, month_avg, month_start, month_dates, month_values)
         >>> api.StatusSummary(statuspage_id)
@@ -220,14 +220,14 @@ class Api(object):
                        incident_details,
                        current_status,
                        current_state,
-                       notify_email=0,
-                       notify_sms=0,
-                       notify_webhook=0,
-                       social=0,
-                       irc=0,
-                       hipchat=0,
-                       slack=0,
-                       all_infrastructure_affected=0):
+                       notify_email="0",
+                       notify_sms="0",
+                       notify_webhook="0",
+                       social="0",
+                       irc="0",
+                       hipchat="0",
+                       slack="0",
+                       all_infrastructure_affected="0"):
         """Create a new incident.
 
            Args:
@@ -235,6 +235,8 @@ class Api(object):
                Status page ID
              infrastructure_affected:
                ID of each affected component and container combo
+             all_infrastructure_affected:
+               Include all components and containers
              incident_name:
                A descriptive title for the incident
              incident_details:
@@ -287,13 +289,13 @@ class Api(object):
                        incident_details,
                        current_status,
                        current_state,
-                       notify_email=0,
-                       notify_sms=0,
-                       notify_webhook=0,
-                       social=0,
-                       irc=0,
-                       hipchat=0, 
-                       slack=0):
+                       notify_email="0",
+                       notify_sms="0",
+                       notify_webhook="0",
+                       social="0",
+                       irc="0",
+                       hipchat="0", 
+                       slack="0"):
         """Update an existing incident
 
            Args:
@@ -349,13 +351,13 @@ class Api(object):
                         incident_details,
                         current_status,
                         current_state,
-                        notify_email=0,
-                        notify_sms=0,
-                        notify_webhook=0,
-                        social=0,
-                        irc=0,
-                        hipchat=0,
-                        slack=0):
+                        notify_email="0",
+                        notify_sms="0",
+                        notify_webhook="0",
+                        social="0",
+                        irc="0",
+                        hipchat="0",
+                        slack="0"):
         """Resolve an existing incident. The incident will be shown in the history instead of on the main page.
 
            Args:
@@ -506,12 +508,12 @@ class Api(object):
                             time_planned_start,
                             date_planned_end,
                             time_planned_end,
-                            automation=0,
-                            all_infrastructure_affected=0,
-                            maintenance_notify_now=0,
-                            maintenance_notify_1_hr=0,
-                            maintenance_notify_24_hr=0,
-                            maintenance_notify_72_hr=0):
+                            automation="0",
+                            all_infrastructure_affected="0",
+                            maintenance_notify_now="0",
+                            maintenance_notify_1_hr="0",
+                            maintenance_notify_24_hr="0",
+                            maintenance_notify_72_hr="0"):
         """Schedule a new maintenance
 
            Args:
@@ -571,13 +573,13 @@ class Api(object):
                          statuspage_id,
                          maintenance_id,
                          maintenance_details,
-                         notify_email=0,
-                         notify_sms=0,
-                         notify_webhook=0,
-                         social=0,
-                         irc=0,
-                         hipchat=0,
-                         slack=0):
+                         notify_email="0",
+                         notify_sms="0",
+                         notify_webhook="0",
+                         social="0",
+                         irc="0",
+                         hipchat="0",
+                         slack="0"):
         """Begin a scheduled maintenance now
 
            Args:
@@ -625,13 +627,13 @@ class Api(object):
                           statuspage_id,
                           maintenance_id,
                           maintenance_details,
-                          notify_email=0,
-                          notify_sms=0,
-                          notify_webhook=0,
-                          social=0,
-                          irc=0,
-                          hipchat=0,
-                          slack=0):
+                          notify_email="0",
+                          notify_sms="0",
+                          notify_webhook="0",
+                          social="0",
+                          irc="0",
+                          hipchat="0",
+                          slack="0"):
         """Update an active maintenance
 
            Args:
@@ -679,13 +681,13 @@ class Api(object):
                           statuspage_id,
                           maintenance_id,
                           maintenance_details,
-                          notify_email=0,
-                          notify_sms=0,
-                          notify_webhook=0,
-                          social=0,
-                          irc=0,
-                          hipchat=0,
-                          slack=0):
+                          notify_email="0",
+                          notify_sms="0",
+                          notify_webhook="0",
+                          social="0",
+                          irc="0",
+                          hipchat="0",
+                          slack="0"):
         """Close an active maintenance. The maintenance will be moved to the history.
 
            Args:
