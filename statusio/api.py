@@ -220,6 +220,7 @@ class Api(object):
                        incident_details,
                        current_status,
                        current_state,
+                       message_subject,
                        notify_email="0",
                        notify_sms="0",
                        notify_webhook="0",
@@ -245,6 +246,8 @@ class Api(object):
                The status of the components and containers affected by this incident
              current_state:
                The state of this incident
+             message_subject:
+               The message subject for email notifications
              notify_email:
                Notify email subscribers (1 = Send notification)
              notify_sms:
@@ -278,7 +281,8 @@ class Api(object):
             'irc': irc,
             'hipchat': hipchat,
             'slack': slack,
-            'all_infrastructure_affected': all_infrastructure_affected
+            'all_infrastructure_affected': all_infrastructure_affected,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data
@@ -289,6 +293,7 @@ class Api(object):
                        incident_details,
                        current_status,
                        current_state,
+                       message_subject,
                        notify_email="0",
                        notify_sms="0",
                        notify_webhook="0",
@@ -309,6 +314,8 @@ class Api(object):
                The status of the components and containers affected by this incident
              current_state:
                The state of this incident
+             message_subject:
+               The message subject for email notifications
              notify_email:
                Notify email subscribers (1 = Send notification)
              notify_sms:
@@ -340,7 +347,8 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
-            'slack': slack
+            'slack': slack,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data
@@ -351,6 +359,7 @@ class Api(object):
                         incident_details,
                         current_status,
                         current_state,
+                        message_subject,
                         notify_email="0",
                         notify_sms="0",
                         notify_webhook="0",
@@ -371,6 +380,8 @@ class Api(object):
                The status of the components and containers affected by this incident
              current_state:
                The state of this incident
+             message_subject
+               The message subject for email notifications
              notify_email:
                Notify email subscribers (1 = Send notification)
              notify_sms:
@@ -402,7 +413,8 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
-            'slack': slack
+            'slack': slack,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data
