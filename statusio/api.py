@@ -59,10 +59,10 @@ class Api(object):
         >>> api.MaintenanceListByID(statuspage_id)
         >>> api.MaintenanceMessage(statuspage_id, message_id)
         >>> api.MaintenanceSingle(statuspage_id, maintenance_id)
-        >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation="0", all_infrastructure_affected="0", maintenance_notify_now="0", maintenance_notify_1_hr="0", maintenance_notify_24_hr="0", maintenance_notify_72_hr="0")
-        >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
-        >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
-        >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
+        >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, message_subject, automation="0", all_infrastructure_affected="0", maintenance_notify_now="0", maintenance_notify_1_hr="0", maintenance_notify_24_hr="0", maintenance_notify_72_hr="0")
+        >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, message_subject, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
+        >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, message_subject, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
+        >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, message_subject, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0")
         >>> api.MaintenanceDelete(statuspage_id, maintenance_id)
         >>> api.MetricUpdate(statuspage_id, metric_id, day_avg, day_start, day_dates, day_values, week_avg, week_start, week_dates, week_values, month_avg, month_start, month_dates, month_values)
         >>> api.StatusSummary(statuspage_id)
@@ -520,6 +520,7 @@ class Api(object):
                             time_planned_start,
                             date_planned_end,
                             time_planned_end,
+                            message_subject,
                             automation="0",
                             all_infrastructure_affected="0",
                             maintenance_notify_now="0",
@@ -545,6 +546,8 @@ class Api(object):
                Date maintenance is expected to end
              time_planned_end:
                Time maintenance is expected to end
+             message_subject:
+               The message subject for email notifications
              automation:
                Automatically start and end the maintenance (default = 0)
              all_infrastructure_affected:
@@ -576,7 +579,8 @@ class Api(object):
             'maintenance_notify_now': maintenance_notify_now,
             'maintenance_notify_1_hr': maintenance_notify_1_hr,
             'maintenance_notify_24_hr': maintenance_notify_24_hr,
-            'maintenance_notify_72_hr': maintenance_notify_72_hr
+            'maintenance_notify_72_hr': maintenance_notify_72_hr,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data
@@ -585,6 +589,7 @@ class Api(object):
                          statuspage_id,
                          maintenance_id,
                          maintenance_details,
+                         message_subject,
                          notify_email="0",
                          notify_sms="0",
                          notify_webhook="0",
@@ -601,6 +606,8 @@ class Api(object):
                Maintenance ID
              maintenance_details:
                Message describing this maintenance update
+             message_subject:
+               The message subject for email notifications
              notify_email:
                Notify email subscribers (1 = Send notification)
              notify_sms:
@@ -630,7 +637,8 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
-            'slack': slack
+            'slack': slack,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data
@@ -639,6 +647,7 @@ class Api(object):
                           statuspage_id,
                           maintenance_id,
                           maintenance_details,
+                          message_subject,
                           notify_email="0",
                           notify_sms="0",
                           notify_webhook="0",
@@ -655,6 +664,8 @@ class Api(object):
                Maintenance ID
              maintenance_details:
                Message describing this maintenance update
+             message_subject:
+               The message subject for email notifications
              notify_email:
                Notify email subscribers (1 = Send notification)
              notify_sms:
@@ -684,7 +695,8 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
-            'slack': slack
+            'slack': slack,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data
@@ -693,6 +705,7 @@ class Api(object):
                           statuspage_id,
                           maintenance_id,
                           maintenance_details,
+                          message_subject,
                           notify_email="0",
                           notify_sms="0",
                           notify_webhook="0",
@@ -709,6 +722,8 @@ class Api(object):
                Maintenance ID
              maintenance_details:
                Message describing this maintenance update
+             message_subject:
+               The message subject for email notifications
              notify_email:
                Notify email subscribers (1 = Send notification)
              notify_sms:
@@ -738,7 +753,8 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
-            'slack': slack
+            'slack': slack,
+            'message_subject': message_subject
         })
         data = json.loads(resp.content.decode('utf-8'))
         return data

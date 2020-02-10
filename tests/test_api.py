@@ -80,7 +80,8 @@ class ApiTest(unittest.TestCase):
             '2018/12/31',
             '23:59',
             '2019/01/01',
-            '23:59')
+            '23:59',
+            'Example Notification Message Subject')
         self.assertEqual(data['status']['error'], 'no')
         ID1 = data['result']
 
@@ -106,7 +107,7 @@ class ApiTest(unittest.TestCase):
         print('Testing MaintenanceStart')
         global ID1, ID2
         data = self._api.MaintenanceStart(
-            STATUSPAGE_ID, ID1, 'Autotest details')
+            STATUSPAGE_ID, ID1, 'Autotest details', 'Example Notification Message Subject')
         self.assertEqual(data['status']['error'], 'no')
 
     def testMaintenance5Update(self):
@@ -114,7 +115,7 @@ class ApiTest(unittest.TestCase):
         print('Testing MaintenanceUpdate')
         global ID1, ID2
         data = self._api.MaintenanceUpdate(
-            STATUSPAGE_ID, ID1, 'Autotest details update')
+            STATUSPAGE_ID, ID1, 'Autotest details update', 'Example Notification Message Subject')
         self.assertEqual(data['status']['error'], 'no')
 
     def testMaintenance7Finish(self):
@@ -122,7 +123,7 @@ class ApiTest(unittest.TestCase):
         print('Testing MaintenanceFinish')
         global ID1, ID2
         data = self._api.MaintenanceFinish(
-            STATUSPAGE_ID, ID1, 'Autotest details finish')
+            STATUSPAGE_ID, ID1, 'Autotest details finish', 'Example Notification Message Subject')
         self.assertEqual(data['status']['error'], 'no')
 
     def testMaintenance8Delete(self):
