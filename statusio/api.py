@@ -897,7 +897,7 @@ class Api(object):
              address:
                Subscriber address (SMS number must include country code ie. +1)
              silent:
-               Supress the welcome message ('1' = Do not send notification)
+               Suppress the welcome message ('1' = Do not send notification)
              granular:
                List of component_container combos
 
