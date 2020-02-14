@@ -67,7 +67,7 @@ class Api(object):
         >>> api.MetricUpdate(statuspage_id, metric_id, day_avg, day_start, day_dates, day_values, week_avg, week_start, week_dates, week_values, month_avg, month_start, month_dates, month_values)
         >>> api.StatusSummary(statuspage_id)
         >>> api.SubscriberList(statuspage_id)
-        >>> api.SubscriberAdd(statuspage_id, method, address, silent=1, granular='')
+        >>> api.SubscriberAdd(statuspage_id, method, address, silent='1', granular='')
         >>> api.SubscriberUpdate(statuspage_id, subscriber_id, address, granular='')
         >>> api.SubscriberRemove(statuspage_id, subscriber_id)
     """
@@ -885,7 +885,7 @@ class Api(object):
                       statuspage_id,
                       method,
                       address,
-                      silent=1,
+                      silent='1',
                       granular=''):
         """Add a new subscriber
 
@@ -897,7 +897,7 @@ class Api(object):
              address:
                Subscriber address (SMS number must include country code ie. +1)
              silent:
-               Supress the welcome message (1 = Do not send notification)
+               Supress the welcome message ('1' = Do not send notification)
              granular:
                List of component_container combos
 
