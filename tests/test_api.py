@@ -80,8 +80,7 @@ class ApiTest(unittest.TestCase):
             '2018/12/31',
             '23:59',
             '2019/01/01',
-            '23:59',
-            'Example Notification Message Subject')
+            '23:59')
         self.assertEqual(data['status']['error'], 'no')
         ID1 = data['result']
 
@@ -107,7 +106,7 @@ class ApiTest(unittest.TestCase):
         print('Testing MaintenanceStart')
         global ID1, ID2
         data = self._api.MaintenanceStart(
-            STATUSPAGE_ID, ID1, 'Autotest details', 'Example Notification Message Subject')
+            STATUSPAGE_ID, ID1, 'Autotest details')
         self.assertEqual(data['status']['error'], 'no')
 
     def testMaintenance5Update(self):
@@ -115,7 +114,7 @@ class ApiTest(unittest.TestCase):
         print('Testing MaintenanceUpdate')
         global ID1, ID2
         data = self._api.MaintenanceUpdate(
-            STATUSPAGE_ID, ID1, 'Autotest details update', 'Example Notification Message Subject')
+            STATUSPAGE_ID, ID1, 'Autotest details update')
         self.assertEqual(data['status']['error'], 'no')
 
     def testMaintenance7Finish(self):
@@ -123,7 +122,7 @@ class ApiTest(unittest.TestCase):
         print('Testing MaintenanceFinish')
         global ID1, ID2
         data = self._api.MaintenanceFinish(
-            STATUSPAGE_ID, ID1, 'Autotest details finish', 'Example Notification Message Subject')
+            STATUSPAGE_ID, ID1, 'Autotest details finish')
         self.assertEqual(data['status']['error'], 'no')
 
     def testMaintenance8Delete(self):
@@ -145,8 +144,7 @@ class ApiTest(unittest.TestCase):
             'Autotest',
             'Autotest details',
             300,
-            100,
-            'Example Notification Message Subject')
+            100)
         self.assertEqual(data['status']['error'], 'no')
         ID1 = data['result']
 
@@ -171,7 +169,7 @@ class ApiTest(unittest.TestCase):
         print('Testing IncidentUpdate')
         global ID1, ID2
         data = self._api.IncidentUpdate(
-            STATUSPAGE_ID, ID1, 'Autotest details update', 300, 100, 'Example Notification Message Subject')
+            STATUSPAGE_ID, ID1, 'Autotest details update', 300, 100)
         self.assertEqual(data['status']['error'], 'no')
 
     def testIncident7Resolve(self):
@@ -179,7 +177,7 @@ class ApiTest(unittest.TestCase):
         print('Testing IncidentResolve')
         global ID1, ID2
         data = self._api.IncidentResolve(
-            STATUSPAGE_ID, ID1, 'Autotest details resolve', 300, 100, 'Example Notification Message Subject')
+            STATUSPAGE_ID, ID1, 'Autotest details resolve', 300, 100)
         self.assertEqual(data['status']['error'], 'no')
 
     def testIncident8Delete(self):
