@@ -51,18 +51,18 @@ class Api(object):
         >>> api.IncidentListByID(statuspage_id)
         >>> api.IncidentMessage(statuspage_id, message_id)
         >>> api.IncidentSingle(statuspage_id, incident_id)
-        >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", all_infrastructure_affected="0", message_subject="Status Notification")
-        >>> api.IncidentUpdate(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", message_subject="Status Notification")
-        >>> api.IncidentResolve(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", message_subject="Status Notification")
+        >>> api.IncidentCreate(statuspage_id, infrastructure_affected, incident_name, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", msteams="0", slack="0", all_infrastructure_affected="0", message_subject="Status Notification")
+        >>> api.IncidentUpdate(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", msteams="0", slack="0", message_subject="Status Notification")
+        >>> api.IncidentResolve(statuspage_id, incident_id, incident_details, current_status, current_state, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", msteams="0", slack="0", message_subject="Status Notification")
         >>> api.IncidentDelete(statuspage_id, incident_id)
         >>> api.MaintenanceList(statuspage_id)
         >>> api.MaintenanceListByID(statuspage_id)
         >>> api.MaintenanceMessage(statuspage_id, message_id)
         >>> api.MaintenanceSingle(statuspage_id, maintenance_id)
         >>> api.MaintenanceSchedule(statuspage_id, infrastructure_affected, maintenance_name, maintenance_details, date_planned_start, time_planned_start, date_planned_end, time_planned_end, automation="0", all_infrastructure_affected="0", maintenance_notify_now="0", maintenance_notify_1_hr="0", maintenance_notify_24_hr="0", maintenance_notify_72_hr="0", message_subject="Status Notification")
-        >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", message_subject="Status Notification")
-        >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", message_subject="Status Notification")
-        >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", slack="0", message_subject="Status Notification")
+        >>> api.MaintenanceStart(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", msteams="0", slack="0", message_subject="Status Notification")
+        >>> api.MaintenanceUpdate(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", msteams="0", slack="0", message_subject="Status Notification")
+        >>> api.MaintenanceFinish(statuspage_id, maintenance_id, maintenance_details, notify_email="0", notify_sms="0", notify_webhook="0", social="0", irc="0", hipchat="0", msteams="0", slack="0", message_subject="Status Notification")
         >>> api.MaintenanceDelete(statuspage_id, maintenance_id)
         >>> api.MetricUpdate(statuspage_id, metric_id, day_avg, day_start, day_dates, day_values, week_avg, week_start, week_dates, week_values, month_avg, month_start, month_dates, month_values)
         >>> api.StatusSummary(statuspage_id)
@@ -226,6 +226,7 @@ class Api(object):
                        social="0",
                        irc="0",
                        hipchat="0",
+                       msteams="0",
                        slack="0",
                        all_infrastructure_affected="0",
                        message_subject="Status Notification"):
@@ -258,8 +259,10 @@ class Api(object):
                Notify IRC channel (1 = Send notification)
              hipchat:
                Notify HipChat room (1 = Send notification)
+             msteams:
+               Notify Microsoft Teams channels (1 = Send notification)
              slack:
-               Notify Slack channel (1 = Send notification)
+               Notify Slack channels (1 = Send notification)
              message_subject:
                The message subject for email notifications
 
@@ -280,6 +283,7 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
+            'msteams': msteams,
             'slack': slack,
             'all_infrastructure_affected': all_infrastructure_affected,
             'message_subject': message_subject
@@ -299,6 +303,7 @@ class Api(object):
                        social="0",
                        irc="0",
                        hipchat="0", 
+                       msteams="0",
                        slack="0",
                        message_subject="Status Notification"):
         """Update an existing incident
@@ -326,8 +331,10 @@ class Api(object):
                Notify IRC channel (1 = Send notification)
              hipchat:
                Notify HipChat room (1 = Send notification)
+             msteams:
+               Notify Microsoft Teams channels (1 = Send notification)
              slack:
-               Notify Slack channel (1 = Send notification)
+               Notify Slack channels (1 = Send notification)
              message_subject:
                The message subject for email notifications
 
@@ -347,6 +354,7 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
+            'msteams': msteams,
             'slack': slack,
             'message_subject': message_subject
         })
@@ -365,6 +373,7 @@ class Api(object):
                         social="0",
                         irc="0",
                         hipchat="0",
+                        msteams="0",
                         slack="0",
                         message_subject="Status Notification"):
         """Resolve an existing incident. The incident will be shown in the history instead of on the main page.
@@ -392,8 +401,10 @@ class Api(object):
                Notify IRC channel (1 = Send notification)
              hipchat:
                Notify HipChat room (1 = Send notification)
+             msteams:
+               Notify Microsoft Teams channels (1 = Send notification)
              slack:
-               Notify Slack channel (1 = Send notification)
+               Notify Slack channels (1 = Send notification)
              message_subject
                The message subject for email notifications
 
@@ -413,6 +424,7 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
+            'msteams': msteams,
             'slack': slack,
             'message_subject': message_subject
         })
@@ -595,6 +607,7 @@ class Api(object):
                          social="0",
                          irc="0",
                          hipchat="0",
+                         msteams="0",
                          slack="0",
                          message_subject="Maintenance Notification"):
         """Begin a scheduled maintenance now
@@ -618,8 +631,10 @@ class Api(object):
                Notify IRC channel (1 = Send notification)
              hipchat:
                Notify HipChat room (1 = Send notification)
+             msteams:
+               Notify Microsoft Teams channels (1 = Send notification)
              slack:
-               Notify Slack channel (1 = Send notification)
+               Notify Slack channels (1 = Send notification)
              message_subject:
                The message subject for email notifications
 
@@ -637,6 +652,7 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
+            'msteams': msteams,
             'slack': slack,
             'message_subject': message_subject
         })
@@ -653,6 +669,7 @@ class Api(object):
                           social="0",
                           irc="0",
                           hipchat="0",
+                          msteams="0",
                           slack="0",
                           message_subject="Maintenance Notification"):
         """Update an active maintenance
@@ -676,8 +693,10 @@ class Api(object):
                Notify IRC channel (1 = Send notification)
              hipchat:
                Notify HipChat room (1 = Send notification)
+             msteams:
+               Notify Microsoft Teams channels (1 = Send notification)
              slack:
-               Notify Slack channel (1 = Send notification)
+               Notify Slack channels (1 = Send notification)
              message_subject:
                The message subject for email notifications
 
@@ -695,6 +714,7 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
+            'msteams': msteams,
             'slack': slack,
             'message_subject': message_subject
         })
@@ -711,6 +731,7 @@ class Api(object):
                           social="0",
                           irc="0",
                           hipchat="0",
+                          msteams="0",
                           slack="0",
                           message_subject="Maintenance Notification"):
         """Close an active maintenance. The maintenance will be moved to the history.
@@ -734,8 +755,10 @@ class Api(object):
                Notify IRC channel (1 = Send notification)
              hipchat:
                Notify HipChat room (1 = Send notification)
+             msteams:
+               Notify Microsoft Teams channels (1 = Send notification)
              slack:
-               Notify Slack channel (1 = Send notification)
+               Notify Slack channels (1 = Send notification)
              message_subject:
                The message subject for email notifications
 
@@ -753,6 +776,7 @@ class Api(object):
             'social': social,
             'irc': irc,
             'hipchat': hipchat,
+            'msteams': msteams,
             'slack': slack,
             'message_subject': message_subject
         })

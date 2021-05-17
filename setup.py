@@ -14,7 +14,7 @@ def read(*paths):
 
 setup(
     name='statusio-python',
-    version='1.1',
+    version='1.2',
     author='Status.io',
     author_email='hello@status.io',
     license='Apache License 2.0',

@@ -1,5 +1,8 @@
 ## Change Log
 
+### v1.2 (2021/5/17)
+- Added Microsoft Teams
+
 ### v1.1 (2020/2/17)
 - Fixed the ordering of the message_subject argument for the incident/maintenance methods which was breaking backwards compatibility
 
