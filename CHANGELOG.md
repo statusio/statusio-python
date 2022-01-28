@@ -1,5 +1,8 @@
 ## Change Log
 
+### v1.3 (2022/1/27)
+- Updated to support Python3
+
 ### v1.2 (2021/5/17)
 - Added Microsoft Teams
 
